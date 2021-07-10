@@ -1,5 +1,5 @@
 import random
-
+from collections import Counter
 def flatten(matrix): return [item for row in matrix for item in row]
 
 def makeGrid(grid):
@@ -15,7 +15,6 @@ def makeGrid(grid):
         #new_grid += '|'
     new_grid += "-------------"
     return new_grid
-
 
 #Check if we have a sequential of 3 times a player
 def checkAllIsPlayer(flatten_grid, player):
@@ -91,3 +90,6 @@ def DummyIAPlay(grid,player='o'):
     
     else:
         return DummyIAPlay(grid,player)
+
+
+
