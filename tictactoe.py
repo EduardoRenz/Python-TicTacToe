@@ -64,6 +64,16 @@ def matchDiag(grid):
         return 'o'
     return False
 
+
+# Check if game is drawn
+def isDraw(grid):
+    # Count number of empty spaces, if there is no empty space return False
+    if not any(map(lambda val: val.strip() == '', flatten(grid))):
+        return True
+    return False
+    
+
+
 # Check if we have one winner
 def checkWinner(grid):
     match_row = matchRow(grid)
