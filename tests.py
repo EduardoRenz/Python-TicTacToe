@@ -10,11 +10,7 @@ test_grid_row = [[' ', ' ', ' '],  [' ', ' ', ' '], ['x', 'x', 'x']]
 test_grid_col = [['x', ' ', 'o'], ['x', ' ', 'o'], ['x', ' ', 'o']]
 test_grid_col2 = [[' ', ' ', 'o'], ['x', ' ', 'o'], ['x', ' ', 'o']]
 test_grid_no_match = [[' ', 'o', ' '], [' ', 'x', 'x'], ['o', 'o', ' ']]
-test_grid_diag = [
-    ['x', ' ', ' '],
-    [' ', 'x', ' '],
-    [' ', ' ', 'x']
-]
+test_grid_diag = [['x', ' ', ' '],[' ', 'x', ' '], [' ', ' ', 'x']]
 
 test_grid_almost_winning_x = [
     ['x', ' ', 'x'],
@@ -69,6 +65,13 @@ test_grid_almost_winning_o_diag3 = [
 ]
 
 
+test_grid_almost_winning_x_diag = [
+    [' ', ' ', 'x'],
+    [' ', 'x', ' '],
+    [' ', ' ', ' ']
+]
+
+
 test_grid_diag2 = [
     [' ', ' ', 'o'],
     [' ', 'o', ' '],
@@ -108,9 +111,7 @@ print("Match Winner in Diag is x :", checkWinner(test_grid_diag))
 print("Match winner in a col is x :", checkWinner(test_grid_col))
 print("Match winner in a col is o :", checkWinner(test_grid_col2))
 
-
-
-# Check if ia can win in rows
+# Check for suggestions for IA
 # case 1 - IA is winning in a row 2
 print("Suggestion of place should be (2,2) : ", iaPLay.play(test_grid_almost_winning_o_row))
 # case 2 - IA is winning in a row 1
@@ -123,6 +124,9 @@ print("Suggestion of place should be (1,2) : ", iaPLay.play(test_grid_almost_win
 print("Suggestion of place should be (1,1) : ", iaPLay.play(test_grid_almost_winning_o_diag))
 # case  no win
 print("Suggestion of place should be a random spot : ", iaPLay.play(test_grid_diag))
+# case check if player is winning on diag
+print(makeGrid(test_grid_almost_winning_x_diag))
+print("Suggestion of place diag x winning should be (2,0) : ", iaPLay.play(test_grid_almost_winning_x_diag))
 
 # # Check if ia can win in cols
 # print(makeGrid(test_grid_almost_winning_o_col))
@@ -140,4 +144,3 @@ print("Suggestion of place should be a random spot : ", iaPLay.play(test_grid_di
 
 # print(makeGrid(test_grid_almost_winning_o_diag3))
 # print(iaPLay.play(test_grid_almost_winning_o_diag3))
-

@@ -8,7 +8,6 @@ class IA() :
         self.player = player
         self.opponent = 'x' if self.player == 'o' else 'o'
 
-
     def __countPlayerOnArray(self, arr, player):
         count = Counter(arr)
         return count[player]
@@ -44,29 +43,40 @@ class IA() :
         return None
 
     def checkForDiagWinning(self,grid,player,spot_count=1):
-        def getDiagValues(grid):
-            flatten_grid = flatten(grid)
-            indexes = list(range(0, len(flatten_grid)))
-            diag_indexes = list(filter(lambda x: x % 4 == 0, indexes))
-            diag_values = [flatten_grid[i] for i in diag_indexes]
-            return diag_indexes,diag_values
+        
+        def get_diag(grid):
+            return [grid[i][i] for i in range(3)]
 
-        diag_indexes, diag_values = getDiagValues(grid)
-        n_count = self.__countPlayerOnArray(diag_values,self.player)
-        empty_spot_count = self.__countPlayerOnArray(diag_values, ' ')
-        if n_count == spot_count and empty_spot_count > 0:
-            empty_col = self.__getEmptySpot(diag_values)
-            empty_row = empty_col
+        def get_inverse_diag(grid):
+            return [grid[i][2-i] for i in range(3)]
 
-            for i,val in enumerate(grid):
-                if i not in diag_indexes:
+
+        diag_values = get_diag(grid)
+        n_count = self.__countPlayerOnArray(diag_values, player)
+
+        if n_count == spot_count and self.__countPlayerOnArray(diag_values, ' ') > 0:
+            for i in range(3):
+                player_on_row_count = self.__countPlayerOnArray(grid[i],player)
+                if player_on_row_count > 0:
                     continue
+                empty_spot = self.__getEmptySpot(diag_values[i])
 
-                if  grid[i][empty_col] == ' ':
-                    empty_row = i
+                return i, empty_spot
 
-            print(f"Player {player} have {n_count} places marked,  place at {empty_row,empty_col}")
-            return empty_row,empty_col
+        inverse_diag_values = get_inverse_diag(grid)
+        n_count_inverse = self.__countPlayerOnArray(get_inverse_diag(grid), player)
+        print(n_count_inverse)
+        if n_count_inverse == spot_count and self.__countPlayerOnArray(inverse_diag_values, ' ') > 0:
+            for i in range(3):
+                player_on_row_count = self.__countPlayerOnArray(grid[i],player)
+                if player_on_row_count > 0:
+                    continue
+                empty_spot = self.__getEmptySpot(inverse_diag_values[i])
+                return i, empty_spot
+
+
+
+        return None
 
     def playRandomSpot(self,grid):
         rand_row = random.randrange(0,3)
@@ -83,7 +93,6 @@ class IA() :
         #Check rows for almost winning
         is_row_wining =  self.checkForRowWinning(grid,player,2)
         if is_row_wining:
-            print(player," is almost wining a row",is_row_wining)
             return is_row_wining
 
         # Check for col almost wining
@@ -94,8 +103,9 @@ class IA() :
         # Check for diags winning
         is_diag_winning = self.checkForDiagWinning(grid,player,2)
         if is_diag_winning:
-            print(player," is almost wining a diag",is_diag_winning)
+            print(player," is almost wining a diag", is_diag_winning)
             return is_diag_winning
+            
         
         return None
 

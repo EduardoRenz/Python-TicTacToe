@@ -73,7 +73,6 @@ def isDraw(grid):
     return False
     
 
-
 # Check if we have one winner
 def checkWinner(grid):
     match_row = matchRow(grid)
@@ -100,6 +99,5 @@ def DummyIAPlay(grid,player='o'):
     
     else:
         return DummyIAPlay(grid,player)
-
 
 
