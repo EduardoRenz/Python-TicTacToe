@@ -50,7 +50,6 @@ class IA() :
         def get_inverse_diag(grid):
             return [grid[i][2-i] for i in range(3)]
 
-
         diag_values = get_diag(grid)
         n_count = self.__countPlayerOnArray(diag_values, player)
 
@@ -73,9 +72,6 @@ class IA() :
                     continue
                 empty_spot = self.__getEmptySpot(inverse_diag_values[i])
                 return i, empty_spot
-
-
-
         return None
 
     def playRandomSpot(self,grid):
@@ -105,8 +101,6 @@ class IA() :
         if is_diag_winning:
             print(player," is almost wining a diag", is_diag_winning)
             return is_diag_winning
-            
-        
         return None
 
 

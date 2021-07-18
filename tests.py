@@ -30,13 +30,11 @@ test_grid_almost_winning_o_row2 = [
     [' ', ' ', ' ']
 ]
 
-
 test_grid_almost_winning_o_col = [
     [' ', ' ', ' '],
     [' ', 'o', ' '],
     [' ', 'o', ' ']
 ]
-
 
 test_grid_almost_winning_o_col2 = [
     [' ', ' ', 'o'],
@@ -50,13 +48,11 @@ test_grid_almost_winning_o_diag = [
     [' ', ' ', 'o']
 ]
 
-
 test_grid_almost_winning_o_diag2 = [
     [' ', ' ', ' '],
     [' ', 'o', ' '],
     ['o', ' ', ' ']
 ]
-
 
 test_grid_almost_winning_o_diag3 = [
     [' ', ' ', 'o'],
@@ -64,13 +60,11 @@ test_grid_almost_winning_o_diag3 = [
     [' ', ' ', ' ']
 ]
 
-
 test_grid_almost_winning_x_diag = [
     [' ', ' ', 'x'],
     [' ', 'x', ' '],
     [' ', ' ', ' ']
 ]
-
 
 test_grid_diag2 = [
     [' ', ' ', 'o'],
